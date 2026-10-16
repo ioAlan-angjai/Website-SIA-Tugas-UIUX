@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Semantic Design Tokens (Anti-AI-Slop Restrained Institutional Palette) */
+  --color-page-bg: #F8FAFC;         /* Background halaman netral tenang */
+  --color-surface: #FFFFFF;         /* Surface kartu/tabel */
+  --color-surface-subtle: #F1F5F9;  /* Background header tabel / subtle striping */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-text-primary: #0F172A;    /* Teks utama: kontras tinggi, nyaman dibaca */
+  --color-text-secondary: #475569;  /* Teks sekunder/metadata: netral, bukan biru */
+  --color-text-muted: #64748B;      /* Keterangan kecil/placeholder */
+
+  --color-border: #E2E8F0;          /* Border & divider halus */
+  --color-border-subtle: #EDF2F7;   /* Divider tabel */
+
+  /* USD Institutional Identity */
+  --color-brand-primary: #1B365D;   /* Navy resmi USD — dipakai terbatas untuk navigasi & tombol utama */
+  --color-brand-hover: #12243E;     /* Navy gelap saat hover */
+  --color-brand-focus: #2563EB;     /* Focus outline ring */
+  --color-brand-accent: #C26100;    /* Amber/terracotta resmi dari lambang USD */
+
+  /* Semantic Status Colors (HANYA digunakan untuk kondisi status fungsional bermakna) */
+  --color-status-success-bg: #F0FDF4;
+  --color-status-success-text: #166534;
+  --color-status-success-border: #BBF7D0;
+
+  --color-status-warning-bg: #FFFBEB;
+  --color-status-warning-text: #92400E;
+  --color-status-warning-border: #FDE68A;
+
+  --color-status-danger-bg: #FEF2F2;
+  --color-status-danger-text: #991B1B;
+  --color-status-danger-border: #FECACA;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numbers for clean numeric alignment in tables and stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbar for data tables */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Print utilities for official KHS / KRS / KKM documents */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
 }
